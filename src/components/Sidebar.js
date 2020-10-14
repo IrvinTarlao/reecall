@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Sidebar = () => {
-    const sidebarStyle = {width: "200px", height: "100%", backgroundColor : "blue", color: "white"}
+    const sidebarStyle = { width: "100%", height: "100%", backgroundColor : "blue", color: "white"}
     return (
         <div style={sidebarStyle}>
             <div>
