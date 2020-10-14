@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import Sidebar from './components/Sidebar';
 import Inbox from './components/Inbox';
+import Sent from './components/Sent';
 import './App.css';
 
-const App = () => {
+const App = ({dispatch, display}) => {
 
   const [showSidebar, setShowSidebar] = useState(true);
-  const [component, setComponent] = useState("inbox");
 
   const containerStyle = { border: "2px solid blue", padding: 0, width: "100vw", height: "100vh", display:"flex", flexWrap: "nowrap"};
   const buttonStyle = {position: "absolute", margin: "20px", border: "2px solid green", zIndex: 1};
@@ -15,11 +16,11 @@ const App = () => {
   const displayStyle = { height: "100%", border: "2px solid red", padding: 0}
 
   const displayComponent = () => {
-    switch (component) {
-      case "inbox":
-        return <Inbox />
-        break;
-    
+    switch (display) {
+      case "INBOX":
+        return <Inbox />;    
+      case "SENT":
+        return <Sent />;    
       default:
         break;
     }
@@ -28,7 +29,7 @@ const App = () => {
   
   return (
     <div style={containerStyle}>
-      <button style={buttonStyle} onClick={()=>setShowSidebar(!showSidebar)}><i class="fas fa-bars"></i></button>
+      <button style={buttonStyle} onClick={()=>setShowSidebar(!showSidebar)}><i className="fas fa-bars"></i></button>
       <Row style={{ height: "100%", padding: 0, margin: 0, width:"100%", border: "2px solid green"}}>
         <Col className={showSidebar ? "" : "d-none"}  md={2} sm={4} xs={6} style={sideContainerStyle}>
 
@@ -44,4 +45,8 @@ const App = () => {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  display: state.display,
+})
+
+export default connect(mapStateToProps)(App);
