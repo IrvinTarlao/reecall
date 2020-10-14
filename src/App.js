@@ -1,57 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'reactstrap'
+import Sidebar from './components/Sidebar';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showSideBar, setShowSideBar] = useState(windowWidth > 780 ? true : false);
+  const [count, setCount] = useState(0);
+
+  const toggleSidebar = () => {
+    setShowSideBar(!showSideBar);
+    setCount(count + 1)
+  };
+
+  const displaySideBar = () => {
+    if (windowWidth > 780) {
+      if (count === 0) {
+        return "sidebar-fixed-desktop"
+      } else if (showSideBar === true) {
+        return "sidebar-slide-right"
+      }
+      else return "sidebar-slide-left"
+    }
+    else if (windowWidth < 780) {
+      if (count === 0) {
+        return "sidebar-display-none"
+      }
+      else if (showSideBar === true) {
+        return "sidebar-slide-right"
+      }
+      else return "sidebar-slide-left"
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div class="App container-fluid h-100" style={{ border: "2px solid red" }}>
+      <Row style={{ height: "100%", border: "2px solid green" }}>
+        <Col className="no-padding" md={{ size: 'auto' }} style={{ height: "100%"}}>
+          <div className={displaySideBar()} style={{ width: "200px", height: "100%" }}>
+            <Sidebar />
+          </div>
+        </Col>
+        <Col className="no-padding"></Col>
+      </Row>
+
     </div>
+
   );
 }
 
