@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import InboxPreview from './InboxPreview';
+import Message from './Message';
 
 const Inbox = ({ inbox }) => {
     const inboxStyle = { height: "100%", backgroundColor: "purple", color: "white", padding: 0, margin: 0 };
@@ -11,7 +12,7 @@ const Inbox = ({ inbox }) => {
                 <InboxPreview />
             </Col>
             <Col md={8} xs={12} className="no-pm">
-                <div style={{ width: "100%", height: "100%", backgroundColor: "lightblue" }}></div>
+                {inbox.messages.map((message) => {if (inbox.id === message.id) return <Message message={message} key={'message'+message.id}/>})}
             </Col>
 
 

@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import * as style from '../styles';
 
 const MessagePreview = ({ message, clicked, dispatch }) => {
 
-    const cardStyle = { backgroundColor: clicked === message.id ? style.displayMsgColor : style.previewBgColor, padding: "20px", height: "150px", fontSize: "0.9em", borderLeft: `4px solid ${style.outlineColor}`, borderRight: clicked === message.id ? `4px solid ${style.displayMsgColor}` : `4px solid ${style.outlineColor}`, width: "100%" };
+    const cardStyle = { display: "flex", flexDirection: "column", justifyContent: "flex-end", backgroundColor: clicked === message.id ? style.displayMsgColor : style.previewBgColor, padding: "20px 20px 0px 20px", height: "150px", fontSize: "0.9em", borderLeft: `4px solid ${style.outlineColor}`, borderRight: clicked === message.id ? `4px solid ${style.displayMsgColor}` : `4px solid ${style.outlineColor}`, width: "100%" };
     const innerCardStyle = { display: "flex", justifyContent: "space-between", alignItems: "center" };
-    const topStyle = { color: "#424142", fontWeight: "bold", display:'flex', alignItems: "center" };
-    const bottomStyle = { paddingLeft: "16px", marginTop: "5px"};
+    const topStyle = { color: style.nameColor, fontWeight: "bold", display:'flex', alignItems: "center" };
+    const bottomStyle = { paddingLeft: "16px", marginTop: "5px", height: "auto"};
     const subjectStyle = { color: "#929397", fontWeight: "bold", marginBottom: "10px"};
     const messageStyle = { color: style.regularTextColor, maxHeight: "40px", overflow: "hidden", width: "100%" };
     const attachStyle = {borderRadius: "8px", marginRight: "10px", padding: "8px", fontSize: "0.8em", fontWeight:"bold"};
     const iconStyle = { marginLeft: "7px", fontSize: "1em", color: "#FFB304" };
-    const newStyle = {marginLeft: "7px", color: '#3D58D1', fontSize: "0.8em", fontWeight:"bold"};
+    const newStyle = {marginLeft: "7px", color: style.purpleText, fontSize: "0.8em", fontWeight:"bold"};
 
     const getCardColor = (cat) => {
         switch (cat) {
@@ -26,8 +26,8 @@ const MessagePreview = ({ message, clicked, dispatch }) => {
     }
 
     const getAttachColor = (a) => {
-        if (a.includes('.psd')) return ['#F4EFFD', '#AB94DD']
-        else if (a.includes('.doc')) return ['#F9E5D1', '#C39370']
+        if (a.includes('.psd')) return style.psdStyle
+        else if (a.includes('.doc')) return style.docStyle
     }
 
     return (
@@ -53,11 +53,7 @@ const MessagePreview = ({ message, clicked, dispatch }) => {
                     <div style={messageStyle}>{message.message}</div>
                 }
             </div>
-
-
-            {/*             
-            <div>{message.starred}</div>
-            <div>{message.attachments}</div> */}
+            <div style={{width:"100%", borderBottom: clicked === message.id ? `1px solid ${style.displayMsgColor}` : `1px solid ${style.outlineColor}`, height:"100%"}}></div>
         </div>
     )
 }

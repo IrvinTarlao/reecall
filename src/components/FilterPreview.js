@@ -19,8 +19,8 @@ const FilterPreview = ({ dispatch }) => {
     }
 
     return (
-        <div style={{ padding: "36px" }}>
-            <div style={{ width: "100%", height: "100px", display: 'flex', position: "relative", alignItems: "center" }}>
+        <div style={{ padding: "36px", height: "100px", display: 'flex', justifyContent:"center", alignItems:"center", borderLeft: `4px solid ${style.outlineColor}`, borderRight: `4px solid ${style.outlineColor}` }}>
+            <div style={{ width: "100%", display: 'flex', position: "relative", alignItems: "center" }}>
                 <i className="fas fa-search" style={{ fontSize: "0.8em", color: style.regularTextColor, position: "absolute", left: "10px" }}></i>
                 <input
                     className="input flex"
@@ -28,8 +28,9 @@ const FilterPreview = ({ dispatch }) => {
                     ref={node => input = node}
                     onKeyPress={onKeyPress}
                     onChange={onChange}
-                    style={{ border: `2px solid ${style.outlineColor}`, borderRadius: "8px", color: style.regularTextColor, outline: "none", boxShadow: "none", width: "100%", fontSize: "0.8em", padding: "10px 10px 10px 35px" }}
+                    style={{ border: `2px solid ${style.outlineColor}`, borderRadius: "10px", color: style.regularTextColor, outline: "none", boxShadow: "none", width: "100%", fontSize: "0.8em", padding: "10px 10px 10px 35px" }}
                 />
+                <i className="fas fa-filter" style={{marginLeft: "30px", color: style.purpleText}}></i>
 
             </div>
 

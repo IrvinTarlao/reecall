@@ -10,6 +10,11 @@
   pointer-events: none;
 }
 
+.input::placeholder {
+  color: #B9BCBF;
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-float infinite 3s ease-in-out;
