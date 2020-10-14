@@ -18,7 +18,7 @@ const App = ({dispatch, display}) => {
   const displayComponent = () => {
     switch (display) {
       case "INBOX":
-        return <Inbox />;    
+        return <Inbox/>;    
       case "SENT":
         return <Sent />;    
       default:
@@ -30,7 +30,7 @@ const App = ({dispatch, display}) => {
   return (
     <div style={containerStyle}>
       <button style={buttonStyle} onClick={()=>setShowSidebar(!showSidebar)}><i className="fas fa-bars"></i></button>
-      <Row style={{ height: "100%", padding: 0, margin: 0, width:"100%", border: "2px solid green"}}>
+      <Row className="no-pm" style={{ height: "100%", border: "2px solid green"}}>
         <Col className={showSidebar ? "" : "d-none"}  md={2} sm={4} xs={6} style={sideContainerStyle}>
 
             <Sidebar />
