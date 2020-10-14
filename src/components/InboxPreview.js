@@ -1,15 +1,13 @@
 import React from 'react';
 import MessagePreview from './MessagePreview';
 
-const InboxPreview = ({messages}) => {
-
+const InboxPreview = ({inbox}) => {
     return (
         <div>
-            {messages.map((message, i) => 
-                <MessagePreview message={message} key={'inboxPrev'+i} />
+            {inbox.messages.map((message, i) => 
+                <MessagePreview message={message} key={'inboxPrev'+i} isClicked={inbox.id === i}/>
             )}
         </div>
-
     )
 };
 
