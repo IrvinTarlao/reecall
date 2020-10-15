@@ -32,7 +32,7 @@ const InboxPreview = ({ inbox }) => {
         <div style={{ maxHeight: "100%", overflow: "scroll" }}>
             <FilterPreview />
             {messagesToDisplay().map((message, i) =>
-                <MessagePreview message={message} key={'inboxPrev' + i} clicked={inbox.id} />
+                <MessagePreview message={message} key={'inboxPrev' + i} clicked={inbox.id||0} />
             )}
         </div>
     )

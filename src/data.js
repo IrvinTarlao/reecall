@@ -1,5 +1,5 @@
 export const user = {
-    user: "Erica Clapton",
+    name: "Erica Clapton",
     email: "erica.clapton@gmail.com",
     avatar: "https://randomuser.me/api/portraits/women/65.jpg"
 };

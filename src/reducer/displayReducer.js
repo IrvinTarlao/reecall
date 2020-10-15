@@ -7,4 +7,4 @@ export default function displayReducer(state = "INBOX", action) {
         default:
             return state
     }
-}
+};

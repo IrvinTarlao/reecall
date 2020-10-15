@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Input } from 'reactstrap';
 import * as style from '../styles';
 
 const FilterPreview = ({ dispatch }) => {
@@ -19,12 +18,12 @@ const FilterPreview = ({ dispatch }) => {
     }
 
     return (
-        <div style={{ padding: "36px", height: "100px", display: 'flex', justifyContent:"center", alignItems:"center", borderLeft: `4px solid ${style.outlineColor}`, borderRight: `4px solid ${style.outlineColor}` }}>
+        <div style={{ padding: "36px 36px", height: "100px", display: 'flex', justifyContent:"center", alignItems:"center", borderLeft: `4px solid ${style.outlineColor}`, borderRight: `4px solid ${style.outlineColor}` }}>
             <div style={{ width: "100%", display: 'flex', position: "relative", alignItems: "center" }}>
                 <i className="fas fa-search" style={{ fontSize: "0.8em", color: style.regularTextColor, position: "absolute", left: "10px" }}></i>
                 <input
                     className="input flex"
-                    placeholder="Search"
+                    placeholder="Search by name, subject, etc."
                     ref={node => input = node}
                     onKeyPress={onKeyPress}
                     onChange={onChange}

@@ -8,6 +8,6 @@ export default function inboxReducer(state = sorted, action) {
         case 'SEARCH':
             return {...state, value: action.value};
         default:
-            return {messages: state, id: 0}
+            return {messages: state, id: null}
     }
 }
